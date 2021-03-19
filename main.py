@@ -69,12 +69,10 @@ class Window:
             row = 1 + row
         self.tree.bind("<<TreeviewSelect>>", self.print_selection)
 
-    def print_selection(self):
+    def print_selection(self, event):
         for selection in self.tree.selection():
             item = self.tree.item(selection)
-            id, dolznost, zvanie, surname, name, secondname = item["values"][0:6]
-            text = "{},{},{},{},{},{}"
-            text = text.format(self.id, self.dolznost, self.zvanie, self.surname, self.name, self.secondname).split(',')
+            text = item["values"]
             self.textId.delete(0.0, END)
             self.textDolznost.delete(0.0, END)
             self.textZvanie.delete(0.0, END)
